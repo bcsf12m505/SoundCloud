@@ -1,0 +1,138 @@
+﻿@{
+    ViewBag.Title = "SignIn";
+    Layout = "~/Views/Shared/UserLayout.cshtml";
+}
+
+@model OMC.Models.User
+
+<!DOCTYPE html>
+
+<html>
+
+
+<head>
+
+    <style>
+
+        body {
+            background-color: white;
+        }
+
+        h2 {
+            color: blue;
+        }
+
+        span {
+            color: red;
+        }
+
+        p {
+            color: white;
+        }
+
+        </style>
+
+
+    <title>Sign In</title>
+
+    <link href="/Content/bootstrap.css" rel="stylesheet"/>
+
+    <link href="/Content/SignIn.css" rel="stylesheet" />
+
+    <script src="/Scripts/bootstrap.js" > </script>
+
+    </head>
+
+<body>
+
+    <div class="row">
+
+       
+
+            <div class="col-xs-4">
+
+               
+
+            </div>
+
+        @if (Session["uname"] != null)
+        {
+            Session["uname"] = ""; 
+        }
+
+        
+
+       
+
+            <div class="col-xs-4">
+
+                <center>
+
+                    <h1 class="animated flipInY" style="margin-top: 30px; margin-left: 20px; margin-bottom: 30px; color: #FF0000; font-family: 'Comic Sans MS'; "><span class="glyphicon glyphicon-log-in"></span><p><b>Sign In</p></b></h1>
+
+                </center>
+
+                @using (Html.BeginForm("SignInUser", "Home", FormMethod.Post, new { @class = "form-sigin" }))
+                {
+                     <div class="input-group">
+                         <span class="input-group-addon" id="basic-addon1">Username  </span>
+                         @Html.TextBoxFor(m => m.Username, null, new { @class = "form-control",  @placeholder = "e.g hafsa shazak", @required = "true" })
+
+
+                         </div>
+                    
+                    <br> <br>
+                    
+                    <div class="input-group">
+                         <span class="input-group-addon" id="basic-addon1">Password </span>
+                         @Html.TextBoxFor(m => m.Password, null, new { @class = "form-control", @placeholder = "e.g xxxxxx", @required = "true", @type = "password"})
+
+
+                         </div>
+                    
+                    <br>
+                    
+                     if (ViewBag.Invalid != null)
+                    {
+
+                        if (ViewBag.Invalid.Equals("Failed"))
+                        {
+
+                            <h3 class="animated fadeInUp" style="margin-top: 30px; margin-left: 20px; margin-bottom: 30px; color: #ffffff; font-family: 'Comic Sans MS' "> Inavalid Username or Password. Try again !</h3>
+
+                        }
+                    }
+                    
+                    
+                    
+                    
+                    
+                    
+                    <br>
+
+                    <button type="submit" class="btn btn-default pull-right">Sign In</button>
+                    
+                    
+                }
+
+
+
+            </div> 
+
+           
+
+           
+
+            <div class="col-xs-6">
+
+            </div>
+
+
+        </div>
+
+   
+
+    </body>
+
+
+</html>
